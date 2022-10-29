@@ -21,20 +21,20 @@ RUN chmod +x build_all.sh \
     && ./build_all.sh \
     && cp build/plugins/*.jar /usr/tsunami/plugins
 	
-#WORKDIR /usr/tsunami/repos/tsunami-security-scanner-plugins/community
-#RUN chmod +x build_all.sh \
-#    && ./build_all.sh \
-#    && cp build/plugins/*.jar /usr/tsunami/plugins
+WORKDIR /usr/tsunami/repos/tsunami-security-scanner-plugins/community
+RUN chmod +x build_all.sh \
+    && ./build_all.sh \
+    && cp build/plugins/*.jar /usr/tsunami/plugins
 	
 #WORKDIR /usr/tsunami/repos/tsunami-security-scanner-plugins/facebook
 #RUN chmod +x build_all.sh \
 #    && ./build_all.sh \
 #    && cp build/plugins/*.jar /usr/tsunami/plugins
 
-#WORKDIR /usr/tsunami/repos/tsunami-security-scanner-plugins/govtech
-#RUN chmod +x build_all.sh \
-#    && ./build_all.sh \
-#    && cp build/plugins/*.jar /usr/tsunami/plugins
+WORKDIR /usr/tsunami/repos/tsunami-security-scanner-plugins/govtech
+RUN chmod +x build_all.sh \
+    && ./build_all.sh \
+    && cp build/plugins/*.jar /usr/tsunami/plugins
 
 	
 # Compile the Tsunami scanner
@@ -84,6 +84,6 @@ RUN npm install
 
 
 EXPOSE 3000
-CMD node ./bin/www > ./err.out 
+CMD node ./bin/www > ./log.out
 
 #CMD tail -f /dev/null

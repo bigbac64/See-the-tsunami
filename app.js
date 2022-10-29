@@ -1,4 +1,3 @@
-const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -19,20 +18,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tsunami', tsunamiRouter);
 
-// Attrape l'erreur 404
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// Affichage les erreur si l'environement est en development
+// Error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  console.log(err);
+  res.status(err.status || 500).send(err.msg);
 });
 
 module.exports = app;
