@@ -1,9 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-const plugins = require("../modele/plugins");
-const command = require("../modele/OSCommand");
-const control = require("../modele/control");
+const command = require("../models/commandOS");
+const control = require("../models/processingRequest");
 
 /*Appelle GET qui permet de lancer l'analyse d'une adresse et de récupérer le rapport généré par tsunami*/
 
@@ -21,7 +20,7 @@ router.get('/', async function (req, res, next) {
         pluginsList = "*";
 
     const addressOption = control.tsunamiAddressOption(req.query.host);
-    const classpath = `${process.env.TSUNAMI_PATH}/tsunami.jar:` + plugins.listRequest(pluginsList);
+    const classpath = `${process.env.TSUNAMI_PATH}/tsunami.jar:` + control.pluginsList(pluginsList);
 
     // vérifivation de la validité de l'adresse (ne vérifie pas si elle existe)
     if(addressOption === undefined)
