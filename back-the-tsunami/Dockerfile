@@ -77,7 +77,7 @@ COPY --from=0 /usr/tsunami /usr/tsunami
 # Get source of API
 WORKDIR /usr/back-the-tsunami
 
-COPY ./projet /usr/back-the-tsunami
+COPY ./ /usr/back-the-tsunami
 
 # Install dependencies of API
 RUN npm install
