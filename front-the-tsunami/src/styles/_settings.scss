@@ -1,0 +1,63 @@
+@font-face {
+  //font import
+}
+
+// variables générale
+$font-def: sans-serif;
+$primary-color-font:#212427;
+$secondary-color-font: #476f8d;
+
+$h1-size: 4.5em;
+$h2-size: 3.5em;
+$h3-size: 2.5em;
+
+$primary-color: #74B7EC;
+$secondary-color: #3a8bc5;
+$secondary-color-hover: #4a9cd9;
+
+
+// Mixin
+
+
+
+// réglages général
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration:  none;
+  color: $primary-color-font;
+}
+
+body{
+  font-family: $font-def;
+  color: $primary-color-font;
+}
+
+li{
+  list-style-type: none;
+}
+
+h1{
+  font-size: $h1-size;
+}
+
+button{
+  font-size: 1.2em;
+  margin: 20px 0;
+  padding: 10px 50px;
+  background-color: $secondary-color;
+  color: $primary-color-font;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: $secondary-color-hover;
+}

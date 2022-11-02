@@ -1,0 +1,89 @@
+
+.Ocean{
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #74B7EC;
+  z-index: -2;
+}
+
+$width-Weaver: 6000px;
+$height-Weaver: 5790px;
+
+
+.Weaver{
+  position: absolute;
+  width: $width-Weaver;
+  height: $height-Weaver;
+  top:  calc(100vh - $height-Weaver);
+  left: calc(50% - $width-Weaver/2);
+  border-radius: 100%;
+  background-color: white;
+  opacity: 1;
+  z-index: -1;
+  -webkit-animation: rotate-center 9s ease-in-out infinite;
+  animation: rotate-center 9s ease-in-out infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+
+.w1{
+  opacity: 0.5;
+}
+
+.w2{
+  opacity: 0.5;
+  left: calc(40% - $width-Weaver/2 );
+}
+
+
+/************************************************ ANIMATION **************************************************/
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: scale(1) rotate(0) translate(100px);
+  }
+
+  25% {
+    -webkit-transform: scale(0.95) rotate(90deg);
+  }
+
+  50%{
+    -webkit-transform: scale(1) rotate(180deg) translate(-100px);
+  }
+
+  75% {
+    -webkit-transform: scaleY(0.95) rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1) rotate(360deg) translate(100px);
+  }
+}
+
+
+@keyframes rotate-center {
+  0% {
+    transform: scale(1) rotate(0) translate(100px);
+  }
+
+  25% {
+    transform: scale(0.95) rotate(90deg);
+  }
+
+  50%{
+    transform: scale(1) rotate(180deg) translate(-100px);
+  }
+
+  75% {
+    transform: scaleY(0.95) rotate(270deg);
+  }
+
+  100% {
+    transform: scaleY(1) rotate(360deg) translate(100px);
+  }
+}

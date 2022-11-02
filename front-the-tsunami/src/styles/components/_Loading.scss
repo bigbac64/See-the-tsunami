@@ -1,0 +1,39 @@
+.loader {
+  position: absolute;
+  border: 16px solid #3e5b75;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  top: calc(55% - 60px);
+  left: calc(50% - 60px);
+  -webkit-animation: appeared 1s ease-out, spin 2s linear infinite; /* Safari */
+  animation: appeared 1s ease-out, spin 2s linear infinite;
+}
+
+
+/************************************************** ANIMATION ***************************************************/
+
+@-webkit-keyframes appeared {
+  0% { -webkit-opacity: 0; }
+  100% { -webkit-opacity: 1; }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes appeared {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

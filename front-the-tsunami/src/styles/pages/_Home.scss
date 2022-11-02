@@ -1,0 +1,15 @@
+.Home > h1{
+  align-content: center;
+  text-align: center;
+}
+
+.Home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+
+  h1{
+    margin: 50px 0;
+  }
+}

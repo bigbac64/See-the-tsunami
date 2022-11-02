@@ -1,0 +1,41 @@
+.Navigation ul{
+  display: flex;
+  flex-flow: row;
+}
+
+.Navigation-Button{
+  position: relative;
+  padding: 10px 30px;
+  margin: 5px;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Navigation-Button::before{
+  content: "";
+  border-radius: 50px;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  background-color: $secondary-color;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.Navigation-Button:hover:before{
+  width: 100%;
+  animation: scale-up-hor-center 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+}
+
+/****************************************** ANIMATION *******************************************************/
+
+@keyframes scale-up-hor-center {
+  0% {
+    transform: scaleX(0.0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,51 @@
+.Search form{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.Search form button{
+  font-size: 1.2em;
+  margin: 20px 0;
+  padding: 10px 50px;
+  background-color: $secondary-color;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.Search form button:hover{
+  background-color: $secondary-color-hover;
+}
+
+.AddressSearch {
+  width: 70vw;
+  height: auto;
+  border-radius: 100px;
+  font-size: 2em;
+}
+
+.Disappeared{
+  animation: disappeared 1s ease-in-out both;
+}
+
+
+
+/************************************************** ANIMATION ***************************************************/
+
+@-webkit-keyframes disappeared {
+  0% { -webkit-opacity: 0; }
+  100% { -webkit-opacity: 1; }
+}
+
+@keyframes disappeared {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scaleY(100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-90px) scaleY(0);
+  }
+}

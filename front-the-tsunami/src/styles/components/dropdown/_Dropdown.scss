@@ -1,0 +1,21 @@
+.Hidden{
+  display: none;
+}
+
+.Icone{
+  height: 12px;
+  margin-right: 5px;
+  vertical-align: center;
+}
+
+.Interact{
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  color: $secondary-color-font;
+}
+
+.DropdownMenu{
+  padding: 5px;
+}
