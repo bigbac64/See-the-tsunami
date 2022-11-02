@@ -1,0 +1,14 @@
+# Git-related files
+.gitattributes
+.gitignore
+.git/
+
+# IDE files
+.idea/
+
+README.md
+.env
+
+# Docker features
+Dockerfile
+.dockerignore
