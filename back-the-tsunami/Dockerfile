@@ -48,6 +48,8 @@ RUN ./gradlew shadowJar \
 # Stage 2: Release
 FROM adoptopenjdk/openjdk13:debianslim-jre
 
+ARG PORT
+
 # Install dependencies
 RUN apt-get update \
  && apt-get install -y --no-install-recommends git nmap ncrack curl ca-certificates \
@@ -58,6 +60,8 @@ RUN apt-get update \
 # Install Node js
 RUN apt install nodejs npm -y
 
+ENV PORT=${PORT}
+ENV CORS=*
 ENV NODE_ENV=production
 ENV TSUNAMI_PATH=/usr/tsunami
 ENV PLUGIN_PATH=/usr/tsunami/plugins
@@ -77,7 +81,7 @@ COPY ./ /usr/back-the-tsunami
 RUN npm install
 
 
-EXPOSE 3000
+EXPOSE ${PORT}
 CMD node ./bin/www > ./log.out
 
 #CMD tail -f /dev/null
