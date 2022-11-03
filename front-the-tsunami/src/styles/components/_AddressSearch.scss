@@ -1,10 +1,11 @@
-.Search form{
+.FormSearch{
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 100vw;
 }
 
-.Search form button{
+.FormSearch button{
   font-size: 1.2em;
   margin: 20px 0;
   padding: 10px 50px;
@@ -15,7 +16,7 @@
   cursor: pointer;
 }
 
-.Search form button:hover{
+.FormSearch button:hover{
   background-color: $secondary-color-hover;
 }
 
@@ -23,7 +24,8 @@
   width: 70vw;
   height: auto;
   border-radius: 100px;
-  font-size: 2em;
+  font-size: 1.9em;
+  padding: 2px 20px;
 }
 
 .Disappeared{

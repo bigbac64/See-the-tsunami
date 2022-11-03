@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Composant qui anime un effet de vague en fond dela page
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Weaver = () => {
     return (
         <div className="Ocean">

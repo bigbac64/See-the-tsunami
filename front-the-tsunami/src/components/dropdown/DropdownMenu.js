@@ -6,13 +6,23 @@ import React, {useState} from 'react';
  * @param name Nom qui resteras afficher
  * @param size Taille du texte qui resteras affiché
  * @param level Indente le contenu de 10 pixel par level
+ * @param deploy Défini si les composant enfant doivent etre visible ou non au départ
+ * @param options les styles a ajouter au div
  * @returns {JSX.Element}
  * @constructor
  */
-const DropdownMenu = ({children, name, size, level}) => {
+const DropdownMenu = ({children, name, size, level, deploy, options}) => {
     const [classes, setClasses] = useState("Hidden")
     const [source, setSource] = useState("./left.svg")
 
+    useState(()=>{
+        setClasses(deploy ? "" : "Hidden");
+    })
+
+    /**
+     * Handler permettant d'afficher les composants enfant ou non
+     * @param e
+     */
     function menuOnClick(e){
         const cls = classes === "";
         const src = source === "./left.svg";
@@ -22,7 +32,7 @@ const DropdownMenu = ({children, name, size, level}) => {
     }
 
     return (
-        <div className="DropdownMenu" style={{marginLeft: `${10 * level}px` }}>
+        <div className="DropdownMenu" style={{marginLeft: `${10 * level}px`, ...options }}>
             <div onClick={menuOnClick} className="Interact">
 
                 {/*Icone de l'etat d'affichage de la liste*/}
