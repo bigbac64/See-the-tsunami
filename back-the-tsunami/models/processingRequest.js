@@ -1,4 +1,7 @@
-/**
+const fs = require('fs');
+const os = require("child_process");
+
+/**********************************************************************************************************************
  * Fonction permettant de définir l'option a utilisé pour tsunami
  * @param address l'adresse a définir
  * @returns {string|undefined} l'option
@@ -27,14 +30,28 @@ function tsunamiAddressOption(address){
 function pluginsList(plugins){
     let classpath = "";
 
+    if(plugins === "*" || plugins === "")
+        return `${process.env.PLUGIN_PATH}/*`;
+
     // on parcoure tous les plugins renseigné
-    plugins.split(':').forEach(plugin => {
+    classpath = plugins.split(':').map(plugin => {
+        return`${process.env.PLUGIN_PATH}/${plugin}`;
+    }).join(':');
 
-        classpath += `${process.env.PLUGIN_PATH}/${plugin}.jar:`;
-    })
-
-    // on retire le dernier ':'
-    return classpath.substring(0, classpath.length-1);
+    return classpath;
 }
 
-module.exports = {tsunamiAddressOption, pluginsList}
+/**********************************************************************************************************************
+ * Test l'existance d'un fichier
+ * @param filePath le chemin du fichier aà tester
+ * @returns {boolean}
+ */
+function fileExiste(filePath){
+    if (fs.existsSync(filePath)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+module.exports = {tsunamiAddressOption, pluginsList, fileExiste}

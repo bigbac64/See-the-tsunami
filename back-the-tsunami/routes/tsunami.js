@@ -5,8 +5,9 @@ const command = require("../models/commandOS");
 const control = require("../models/processingRequest");
 
 /*Appelle GET qui permet de lancer l'analyse d'une adresse et de récupérer le rapport généré par tsunami*/
-
 router.get('/', async function (req, res, next) {
+    const pathResult = `${process.env.RESULT_PATH}/tsunami-result.json`;
+
     // vérification de l'existance du parametre host
     if(req.query.host === undefined)
         return next({
@@ -16,8 +17,11 @@ router.get('/', async function (req, res, next) {
 
     // vérification du contenu du parametre plugins
     let pluginsList = req.query.plugins;
+    
     if(pluginsList === undefined || pluginsList === "")
         pluginsList = "*";
+
+    console.log(pluginsList);
 
     const addressOption = control.tsunamiAddressOption(req.query.host);
     const classpath = `${process.env.TSUNAMI_PATH}/tsunami.jar:` + control.pluginsList(pluginsList);
@@ -29,23 +33,31 @@ router.get('/', async function (req, res, next) {
             msg:`l'adresse '${req.query.host}' n'est pas valide`
         });
 
+    if(control.fileExiste(pathResult) && !command.rm(pathResult)){
+        return next({
+            status:500,
+            msg:`une erreur sur la supression de l'ancien résultat a échoué`
+        });
+    }
+
     // Lancement de tsunami
-    if (await command.java(
+    await command.java(
         classpath,
         "com.google.tsunami.main.cli.TsunamiCli",
         addressOption,
         "--scan-results-local-output-format=JSON",
-        `--scan-results-local-output-filename=${process.env.RESULT_PATH}/tsunami-result.json`)) {
-        let file = fs.readFileSync(`${process.env.RESULT_PATH}/tsunami-result.json`);
-        // Success
-        res.json(JSON.parse(file));
-    } else {
-        // Failed
+        `--scan-results-local-output-filename=${pathResult}`);
+
+    
+    if(!control.fileExiste(pathResult)) {
         return next({
-            status:500,
-            msg:"la commande n'a pu être exécuté"
+            status: 500,
+            msg: "la commande java n'a fournie aucun résultat"
         });
     }
+
+    let file = fs.readFileSync(pathResult);
+    res.json(JSON.parse(file));
 });
 
 module.exports = router;

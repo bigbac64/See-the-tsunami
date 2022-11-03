@@ -1,28 +1,49 @@
 const os = require("child_process");
 const util = require('util');
+const fs = require('fs');
 
-/**
+/**********************************************************************************************************************
  * lance une commande java
  * @param classpath les dépendances à utiliser
  * @param main la class java principale a lancer
  * @param options les options supplémentaire
  */
 async function java(classpath, main, ...options ){
-    let command = `java -cp ${classpath} ${main} ` + [...options].join(' ');
+    const command = `java -cp ${classpath} ${main} ` + [...options].join(' ');
     console.log(command);
-    const asFunc = util.promisify((callback) =>{
-        os.exec(command, (error, stdout, stderr) =>{
-            callback(null, error, stdout, stderr);
-        })
-    });
-
-    const result = await asFunc();
-    if (result != null) {
-        console.log(`error: ${result}`);
-        return false;
+    try {
+        os.execSync(command);
+    } catch (error) {
+        fs.writeFileSync('java.out', `Status Code: ${error.status} with '${error.message}'`);
     }
-    return true;
-
 }
 
-module.exports = {java}
+/**********************************************************************************************************************
+ * Affiche la liste des fichiers contenu dans un répertoire
+ * @param directoryPath le chemin du répertoire à scanner
+ * @returns {Promise<boolean|*>} la liste des fichier sinon false
+ */
+async function ls(directoryPath){
+    try {
+        return fs.readdirSync(directoryPath);
+    }catch (error) {
+        fs.writeFileSync('ls.out', `Status Code: ${error.status} with '${error.message}'`);
+        return false
+    }
+}
+
+/**********************************************************************************************************************
+ * Supprime un fichier
+ * @param path le chemin du fichier a supprimer
+ * @returns {boolean} le succes de la commande
+ */
+function rm(path){
+    if (!fs.unlinkSync(path)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+module.exports = {java, ls, rm}
