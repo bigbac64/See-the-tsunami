@@ -14,6 +14,7 @@ RUN npm run build
 # Set the env
 ENV NODE_ENV=production
 ENV PORT=3001
+ENV REACT_APP_DNS=http://localhost:3000
 
 EXPOSE 3001
 CMD [ "npx", "serve", "build" ]

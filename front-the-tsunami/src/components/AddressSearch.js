@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import Loading from "./Loading";
-import ResultTsunami from "./ResultTsunami";
 import Grid from "./table/Grid";
 import Item from "./table/Item";
 import DropdownMenu from "./dropdown/DropdownMenu";
@@ -22,11 +21,11 @@ const AddressSearch = ({state}) => {
     // récupère la liste des plugins disponible pour tsunami
     useState(()=>{
         axios
-            .get(`http://localhost:3000/plugins`)
+            .get(`${process.env.REACT_APP_DNS}/plugins`)
             .then((res) => {
                 setPlugins(res.data);
             }).catch(err=>{
-                console.log(err);
+                console.log(err.message);
         })
     })
 
@@ -37,15 +36,14 @@ const AddressSearch = ({state}) => {
     function onSubmit(data){
         setLoading(true);
         const pluginsList = isCheckAll ? "*" : isCheck.map(e=>plugins[e]).join(":");
-        //console.log(pluginsList);
+        console.log(process.env.REACT_APP_DNS);
         axios
-            .get(`http://localhost:3000/tsunami?host=${data.address}&plugins=${pluginsList}`)
+            .get(`${process.env.REACT_APP_DNS}/tsunami?host=${data.address}&plugins=${pluginsList}`)
             .then((res) => {
                 setLoading(false);
                 state(res.data);
             }).catch((err, res)=>{
                 setLoading(false);
-                console.log(err);
                 state({error: err.message, info: err.response.data});
             })
     }

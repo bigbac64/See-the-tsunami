@@ -33,15 +33,15 @@ const ResultTsunami = ({report, state}) => {
      */
     function iconeResult(report){
         if(!report.hasOwnProperty('scanStatus'))
-            return (<img className="IconeResult" src={"./err.svg"}></img>);
+            return (<img className="IconeResult" src={"./err.svg"} alt="fail"/>);
 
         if(report.scanStatus === TSUNAMI_STATUS.fail)
-            return (<img className="IconeResult" src={"./err.svg"}></img>);
+            return (<img className="IconeResult" src={"./err.svg"} alt="fail"/>);
 
         if(Object.keys(report.fullDetectionReports).length !== 0)
-            return (<img className="IconeResult" src={"./warn.svg"}></img>);
+            return (<img className="IconeResult" src={"./warn.svg"} alt="Vulnerable"/>);
 
-        return (<img className="IconeResult" src={"./sucess.svg"}></img>);
+        return (<img className="IconeResult" src={"./sucess.svg"} alt="good"/>);
     }
 
     /**

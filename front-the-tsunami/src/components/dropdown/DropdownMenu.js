@@ -36,7 +36,7 @@ const DropdownMenu = ({children, name, size, level, deploy, options}) => {
             <div onClick={menuOnClick} className="Interact">
 
                 {/*Icone de l'etat d'affichage de la liste*/}
-                <img className="Icone" style={{
+                <img alt=">"className="Icone" style={{
                     marginBottom: `calc( ${size} / 20 )`,
                     height: `calc( ${size} / 2 )`
                 }} src={source} />
