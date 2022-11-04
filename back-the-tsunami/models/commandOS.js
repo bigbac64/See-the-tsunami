@@ -19,7 +19,7 @@ async function java(classpath, main, ...options ){
 }
 
 /**********************************************************************************************************************
- * Affiche la liste des fichiers contenu dans un répertoire
+ * Lance un scan d'un répertoire afin de retourner la liste des fichiers contenu
  * @param directoryPath le chemin du répertoire à scanner
  * @returns {Promise<boolean|*>} la liste des fichier sinon false
  */

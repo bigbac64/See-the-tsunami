@@ -2,7 +2,8 @@ const fs = require('fs');
 const os = require("child_process");
 
 /**********************************************************************************************************************
- * Fonction permettant de définir l'option a utilisé pour tsunami
+ * Fonction permettant de définir l'option a utilisé pour Tsunami,
+ * A partir d’une adresse elle détecte la type d’adresse à l’aide des RegEx et retourne une option interprétable par Tsunami
  * @param address l'adresse a définir
  * @returns {string|undefined} l'option
  */
@@ -24,7 +25,7 @@ function tsunamiAddressOption(address){
 }
 
 /**********************************************************************************************************************
- * Transforme le json contenant la liste des plugins en string exploitable pour les classpath java
+ * Transforme le json contenant la liste des plugins passé en paramètre, en string exploitable pour les classpath java
  * @param plugins
  */
 function pluginsList(plugins){
