@@ -3,7 +3,7 @@
 # processingRequest
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="10px" /> Ce module permet de traiter ou contrôler certaines requêtes pour que l’API puisent l’exploiter
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="20px" /> Ce module permet de traiter ou contrôler certaines requêtes pour que l’API puisent l’exploiter
 
 </aside>
 
@@ -22,7 +22,7 @@ Test l’existance d’un fichier
 # commandOS
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="10px" /> Ce module permet de traiter les commande utilisé en shell
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="20px" /> Ce module permet de traiter les commande utilisé en shell
 
 </aside>
 
