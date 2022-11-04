@@ -15,7 +15,7 @@ Outils :
 # API
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="10px" /> L’API seras créé dans un docker afin de faciliter le déploiement et de contrôler les dépendances
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="20px" /> L’API seras créé dans un docker afin de faciliter le déploiement et de contrôler les dépendances
 
 </aside>
 
@@ -86,7 +86,7 @@ L’API contient 2 chemin exploitables
 ### Analyser une adresse avec T**sunami**
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="10px" /> La requête permet de lancer l’analyse d’une adresse et de recevoir le rapport créer par Tsunami
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="20px" /> La requête permet de lancer l’analyse d’une adresse et de recevoir le rapport créer par Tsunami
 
 </aside>
 
@@ -108,7 +108,7 @@ exemple : `http://127.0.0.1:3000/tsunami?host=127.0.0.1&plugins=nmap_port_scanne
 ### Récupérer la liste des plugins
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="10px" /> La requête permet de récupérer la liste des plugins utilisable par Tsunami
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="20px" /> La requête permet de récupérer la liste des plugins utilisable par Tsunami
 
 </aside>
 
