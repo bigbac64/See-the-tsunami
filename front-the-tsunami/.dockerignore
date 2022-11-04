@@ -1,3 +1,6 @@
+# Documentation
+/docs
+
 # Git-related files
 .gitattributes
 .gitignore
@@ -5,6 +8,10 @@
 
 # IDE files
 .idea/
+
+# build
+/build
+/node_modules
 
 README.md
 .env

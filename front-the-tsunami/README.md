@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Technologie
 
-## Available Scripts
+Builder : **Docker**
 
-In the project directory, you can run:
+Environnement d’exécution : [**Node.js (nodejs.org)**](https://nodejs.org/fr/)
 
-### `npm start`
+Langage : **Javascript**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Framwork : [**React JS**](https://fr.reactjs.org/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+API : [**Back-end**](../back-the-tsunami)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Maquette
 
-### `npm run build`
+## Lancer le scan d’une adresse
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![accueil (4).svg](docs/accueil_(4).svg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Consulter les résultat
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Rapport.svg](docs/Rapport.svg)
 
-### `npm run eject`
+# Utilisation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Lancer le scan d’une adresse
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![utilisation search.svg](docs/utilisation_search.svg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Docker
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation
 
-## Learn More
+Afin de lancer le serveur front-end avec docker, vous devrez créer un clone du repository du projet et accéder au répertoire **front-the-tsunami**, puis construire une image en ligne de commande :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+docker build --build-arg PORT=3001 --build-arg DOMAIN_API=http://localhost:3000 -t front-the-tsunami ./ 
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Vous pouvez définir le port sur le quel tourneras le serveur en modifiant la valeur de **PORT** et définir l’adresse de l’API en modifiant la valeur **DOMAIN_API**
 
-### Code Splitting
+Ensuite lancer une image front-the-tsunami avec la commande :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+docker run -p 3001:3001 --name front-the-tsunami -d front-the-tsunami
+```
 
-### Analyzing the Bundle Size
+pensez a modifier le port selon votre choix précédent
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Voila le serveur front-end est maintenant up vous pouvez maintenant ouvrir sur un navigateur l’adresse `http://localhost:3001` pour consulter le site
 
-### Making a Progressive Web App
+## Détail de fonctionnement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Stage 1
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Utilisation de l’image **node:16-alpine** comme base pour l’image de la partie front
+- Récupération de l’argument **PORT** et **DOMAIN_API**
+- Copie du projet **front-the-tsunami**
+- Construction des dépendences **Node** du projet
+- Ajout des variables d’environment
+- Ouverture du port **PORT**
+- Lancement du serveur node

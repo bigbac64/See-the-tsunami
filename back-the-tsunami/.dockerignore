@@ -1,3 +1,6 @@
+# Documentation
+/docs
+
 # Git-related files
 .gitattributes
 .gitignore
@@ -8,6 +11,10 @@
 
 README.md
 .env
+
+# build
+/build
+/node_modules
 
 # Docker features
 Dockerfile
