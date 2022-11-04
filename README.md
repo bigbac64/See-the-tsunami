@@ -16,7 +16,7 @@ par Antoine DESOBRY - 2022 - cyna x sup de vinci
 # Projet
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="10px" /> Le projet fonctionne en deux partie :
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="20px" /> Le projet fonctionne en deux partie :
 
 - Une partie fonctionnel
 - Une partie interface
